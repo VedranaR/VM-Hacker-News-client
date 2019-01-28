@@ -3,22 +3,47 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    fetch("(https://github.com/HackerNews/API")
+      //.then(response => response.json())
+      .then(data => console.log(data));
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="container lime accent-2">
+          <div className="row">
+            <div className="col s12">
+              <h1 className="card-title h-5 m-3 p-3 text-primary bg-light">
+                Hacker News Client
+              </h1>
+              <div className="card-action row">
+                <h2
+                  id="task-title"
+                  className="col s6 border border-danger rounded m-2"
+                >
+                  Newest
+                </h2>
+                <div className="input-field col s6 border border-primary rounded m-2">
+                  <input
+                    type="text"
+                    name="filter"
+                    id="filter"
+                    className="m-2"
+                  />
+                  <button
+                    onClick={this.filterNews}
+                    className="btn btn-primary m-2"
+                  >
+                    Filter News
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
