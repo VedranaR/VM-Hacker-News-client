@@ -5,9 +5,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class App extends Component {
   constructor() {
     super();
-    fetch("(https://github.com/HackerNews/API")
-      //.then(response => response.json())
-      .then(data => console.log(data));
+    this.state = {
+      storiesID: []
+    };
+    fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
+      .then(response => response.json())
+      .then(data => {
+        for (let i = 0; i <= 30; i++) {
+          this.state.storiesID.push(data[i]);
+        }
+      });
+    //console.log(this.state.storiesID);
   }
 
   render() {
